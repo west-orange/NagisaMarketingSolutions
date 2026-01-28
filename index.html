@@ -217,10 +217,13 @@
         .domain-image {
             height: 200px;
             background: var(--sakura);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .domain-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .domain-content {
@@ -300,34 +303,107 @@
         }
 
         /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            position: relative;
-            height: 250px;
-            background: var(--sakura);
-            border-radius: 8px;
-            overflow: hidden;
+        .projects-list {
+            max-width: 900px;
+            margin: 0 auto;
             display: flex;
-            align-items: flex-end;
-            cursor: pointer;
-            transition: transform 0.3s;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        .project-card:hover {
-            transform: scale(1.02);
+        .project-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .project-title {
-            width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: var(--white);
+        .project-category {
+            display: inline-block;
+            background: var(--sakura);
+            color: var(--black);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .project-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-item p {
+            color: var(--gray);
             font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .project-carousel {
+            position: relative;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-container img {
+            min-width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background: var(--gray-light);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-btn.prev {
+            left: 15px;
+        }
+
+        .carousel-btn.next {
+            right: 15px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--sakura);
         }
 
         /* Contact */
@@ -504,24 +580,24 @@
             <h2 class="section-title">Business Domains</h2>
             <div class="domains-grid">
                 <div class="domain-card">
-                    <div class="domain-image">🤝</div>
+                    <div class="domain-image"><img src="imgs/businessdomains/BusinessDevelopment.png" alt="Business Development"></div>
                     <div class="domain-content">
                         <h4>Business Development</h4>
-                        <p>Supporting the cultural integration of Japanese brands in India by enhancing Japan's presence in sales and marketing. Collaborating closely with Indian teams to drive new business opportunities and strengthen brand presence across India.</p>
+                        <p>Working as part of Japanese corporate sales teams alongside Indian teams to enhance Japan's presence, create business opportunities, and foster collaboration.</p>
                     </div>
                 </div>
                 <div class="domain-card">
-                    <div class="domain-image">🌸</div>
+                    <div class="domain-image"><img src="imgs/businessdomains/BrandEngagement.png" alt="Brand Engagement"></div>
                     <div class="domain-content">
                         <h4>Brand Engagement</h4>
-                        <p>Expressing Japanese craftsmanship and brand stories through immersive cultural experiences centered on the value of wa (harmony). Events designed for celebrities, media, and influencers, highlighting artistry, seasonal traditions, and refined hospitality.</p>
+                        <p>Delivering Japan-inspired experiences that enhance brand value and resonance through cultural storytelling, artistry, and refined hospitality.</p>
                     </div>
                 </div>
                 <div class="domain-card">
-                    <div class="domain-image">🏢</div>
+                    <div class="domain-image"><img src="imgs/businessdomains/CorporateEngagement.png" alt="Corporate Engagement"></div>
                     <div class="domain-content">
                         <h4>Corporate Engagement</h4>
-                        <p>Designing internal programs for corporations to deepen cultural understanding and strengthen employee engagement. Providing hands-on experiences that allow participants to connect with Japanese culture in an authentic and memorable way.</p>
+                        <p>Designing programs to deepen cultural understanding within organizations and enhance employee loyalty through hands-on Japanese cultural experiences.</p>
                     </div>
                 </div>
             </div>
@@ -557,21 +633,52 @@
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Projects / Works</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-title">Japanese Brand × India Corporate Collaboration</div>
+            <div class="projects-list">
+                <div class="project-item">
+                    <span class="project-category">Business Development</span>
+                    <h4>Kansai Nerolac Paints</h4>
+                    <p>Supporting the cultural integration of Kansai Nerolac Paints by enhancing Japan's presence in sales and marketing. As part of the newly established Japanese corporate sales team, collaborating closely with Indian teams to drive new business opportunities and strengthen the Kansai brand's presence across India.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP1.png" alt="Kansai Nerolac Paints">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP2.png" alt="Kansai Nerolac Paints">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP3.jpg" alt="Kansai Nerolac Paints">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
                 </div>
-                <div class="project-card">
-                    <div class="project-title">Hibiki – Wa Experience Event</div>
+                <div class="project-item">
+                    <span class="project-category">Brand Engagement</span>
+                    <h4>Suntory Whisky Hibiki</h4>
+                    <p>Partnering with Suntory Whisky Hibiki, our team expressed the brand's story and Japanese craftsmanship through cultural experiences centered on the value of wa (harmony). Targeting celebrities, media, and influencers, the events highlighted Hibiki's artistry and spirit with Japanese calligraphy, seasonal traditions, and refined hospitality.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/SuntoryWhiskyHibiki/Suntory1.jpg" alt="Suntory Whisky Hibiki">
+                            <img src="imgs/ProjectsWorks/SuntoryWhiskyHibiki/Suntory2.png" alt="Suntory Whisky Hibiki">
+                            <img src="imgs/ProjectsWorks/SuntoryWhiskyHibiki/Suntory3.png" alt="Suntory Whisky Hibiki">
+                            <img src="imgs/ProjectsWorks/SuntoryWhiskyHibiki/Suntory4.jpg" alt="Suntory Whisky Hibiki">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
                 </div>
-                <div class="project-card">
-                    <div class="project-title">Corporate Cultural Day Program</div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">Sales Integration Project</div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">Influencer Engagement Event</div>
+                <div class="project-item">
+                    <span class="project-category">Corporate Engagement</span>
+                    <h4>Kansai Nerolac Paints HR Event</h4>
+                    <p>Conducted an HR event at Kansai Nerolac Paints' Mumbai Head Office with 400+ Indian employees, designed to deepen cultural understanding and strengthen employee engagement. The program allowed employees to experience Japanese culture and its spirit firsthand, fostering a sense of connection, pride, and loyalty within the organization.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaintsHREvent/KNP4.png" alt="Kansai Nerolac Paints HR Event">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaintsHREvent/KNP5.png" alt="Kansai Nerolac Paints HR Event">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaintsHREvent/KNP6.png" alt="Kansai Nerolac Paints HR Event">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
         </div>
@@ -622,6 +729,50 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // Carousel functionality
+        document.querySelectorAll('.project-item').forEach(item => {
+            const carousel = item.querySelector('.project-carousel');
+            const container = item.querySelector('.carousel-container');
+            const images = container.querySelectorAll('img');
+            const dotsContainer = item.querySelector('.carousel-dots');
+            const prevBtn = item.querySelector('.carousel-btn.prev');
+            const nextBtn = item.querySelector('.carousel-btn.next');
+            let currentIndex = 0;
+
+            // Create dots
+            images.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+            function updateCarousel() {
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateCarousel();
             });
         });
     </script>
