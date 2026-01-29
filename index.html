@@ -328,6 +328,44 @@
             margin-bottom: 15px;
         }
 
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border: 1px solid var(--black);
+            background: transparent;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        .filter-btn:hover {
+            background: var(--sakura);
+            border-color: var(--sakura);
+        }
+
+        .filter-btn.active {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .project-item {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-item.hidden {
+            display: none;
+        }
+
         .project-item h4 {
             font-size: 1.3rem;
             margin-bottom: 15px;
@@ -610,7 +648,7 @@
             <h2 class="section-title">Team</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="team-photo"><img src="imgs/nagisa.jpg" alt="Nagisa Iizuka" class="nagisa"></div>
+                    <div class="team-photo"><img src="imgs/Members/nagisa.jpg" alt="Nagisa Iizuka" class="nagisa"></div>
                     <div class="team-info">
                         <h4>Nagisa Iizuka</h4>
                         <p class="role">Founder, CEO</p>
@@ -618,7 +656,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <div class="team-photo"><img src="imgs/Gagandeep.jpg" alt="Gagandeep Makkar" class="gagandeep"></div>
+                    <div class="team-photo"><img src="imgs/Members/Gagandeep.jpg" alt="Gagandeep Makkar" class="gagandeep"></div>
                     <div class="team-info">
                         <h4>Gagandeep Makkar</h4>
                         <p class="role">Japanese Culture Consultant, Trainer</p>
@@ -633,8 +671,14 @@
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Projects / Works</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="business">Business Development</button>
+                <button class="filter-btn" data-filter="brand">Brand Engagement</button>
+                <button class="filter-btn" data-filter="corporate">Corporate Engagement</button>
+            </div>
             <div class="projects-list">
-                <div class="project-item">
+                <div class="project-item" data-category="business">
                     <span class="project-category">Business Development</span>
                     <h4>Kansai Nerolac Paints</h4>
                     <p>Supporting the cultural integration of Kansai Nerolac Paints by enhancing Japan's presence in sales and marketing. As part of the newly established Japanese corporate sales team, collaborating closely with Indian teams to drive new business opportunities and strengthen the Kansai brand's presence across India.</p>
@@ -642,14 +686,14 @@
                         <div class="carousel-container">
                             <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP1.png" alt="Kansai Nerolac Paints">
                             <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP2.png" alt="Kansai Nerolac Paints">
-                            <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP3.jpg" alt="Kansai Nerolac Paints">
+                            <img src="imgs/ProjectsWorks/KansaiNerolacPaints/KNP3.jpg" alt="Kansai Nerolac Paints" class="fit-contain">
                         </div>
                         <button class="carousel-btn prev">&lt;</button>
                         <button class="carousel-btn next">&gt;</button>
                     </div>
                     <div class="carousel-dots"></div>
                 </div>
-                <div class="project-item">
+                <div class="project-item" data-category="brand">
                     <span class="project-category">Brand Engagement</span>
                     <h4>Suntory Whisky Hibiki</h4>
                     <p>Partnering with Suntory Whisky Hibiki, our team expressed the brand's story and Japanese craftsmanship through cultural experiences centered on the value of wa (harmony). Targeting celebrities, media, and influencers, the events highlighted Hibiki's artistry and spirit with Japanese calligraphy, seasonal traditions, and refined hospitality.</p>
@@ -665,7 +709,48 @@
                     </div>
                     <div class="carousel-dots"></div>
                 </div>
-                <div class="project-item">
+                <div class="project-item" data-category="brand">
+                    <span class="project-category">Brand Engagement</span>
+                    <h4>TOTO</h4>
+                    <p>Planned and executed Japanese-culture–themed workshops at events for affluent end-users and at exhibitions targeting architects and interior designers, fostering deep empathy and positive sentiment toward the brand.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/TOTO/TOTO.png" alt="TOTO">
+                            <img src="imgs/ProjectsWorks/TOTO/TOTO 2.png" alt="TOTO">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="project-item" data-category="brand">
+                    <span class="project-category">Brand Engagement</span>
+                    <h4>Johnnie Walker</h4>
+                    <p>Planned and executed engagement strategies for VIP guests at a Japan-themed product launch party and small dinner party.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/JohnnieWalker/JohnnieWalker.png" alt="Johnnie Walker">
+                            <img src="imgs/ProjectsWorks/JohnnieWalker/JohnnieWalker2.png" alt="Johnnie Walker">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="project-item" data-category="brand">
+                    <span class="project-category">Brand Engagement</span>
+                    <h4>Lexus</h4>
+                    <p>Delivered a Japanese cultural experience embodying the spirit of 'Japanese Craftsmanship' for Lexus owners at Lexus dealerships.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/Lexus/Lexus.JPG" alt="Lexus">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="project-item" data-category="corporate">
                     <span class="project-category">Corporate Engagement</span>
                     <h4>Kansai Nerolac Paints HR Event</h4>
                     <p>Conducted an HR event at Kansai Nerolac Paints' Mumbai Head Office with 400+ Indian employees, designed to deepen cultural understanding and strengthen employee engagement. The program allowed employees to experience Japanese culture and its spirit firsthand, fostering a sense of connection, pride, and loyalty within the organization.</p>
@@ -674,6 +759,20 @@
                             <img src="imgs/ProjectsWorks/KansaiNerolacPaintsHREvent/KNP4.png" alt="Kansai Nerolac Paints HR Event">
                             <img src="imgs/ProjectsWorks/KansaiNerolacPaintsHREvent/KNP5.png" alt="Kansai Nerolac Paints HR Event">
                             <img src="imgs/ProjectsWorks/KansaiNerolacPaintsHREvent/KNP6.png" alt="Kansai Nerolac Paints HR Event">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="project-item" data-category="corporate">
+                    <span class="project-category">Corporate Engagement</span>
+                    <h4>Pilot Corporation</h4>
+                    <p>Conducted an internal event to enhance and sustain Indian employees' engagement, offering experiential learning of Japanese business etiquette and seasonal cultural customs.</p>
+                    <div class="project-carousel">
+                        <div class="carousel-container">
+                            <img src="imgs/ProjectsWorks/PILOT/PILOT.jpg" alt="Pilot Corporation">
+                            <img src="imgs/ProjectsWorks/PILOT/PILOT2.jpg" alt="Pilot Corporation">
                         </div>
                         <button class="carousel-btn prev">&lt;</button>
                         <button class="carousel-btn next">&gt;</button>
@@ -773,6 +872,29 @@
             nextBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % images.length;
                 updateCarousel();
+            });
+        });
+
+        // Project filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                // Filter projects
+                projectItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
             });
         });
     </script>
