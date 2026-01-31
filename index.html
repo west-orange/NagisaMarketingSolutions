@@ -542,10 +542,6 @@
             font-family: 'Noto Serif JP', serif;
         }
 
-        .pageclip-form__success::before {
-            content: "Thank you for your message!";
-        }
-
         .pageclip-form[data-pageclip-status="success"] .form-group,
         .pageclip-form[data-pageclip-status="success"] .pageclip-form__submit {
             display: none;
@@ -971,5 +967,23 @@
         });
     </script>
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
+    <script>
+        // Reset form after successful submission
+        const contactForm = document.querySelector('.pageclip-form');
+        if (contactForm) {
+            contactForm.addEventListener('pageclip:response', function(e) {
+                if (e.detail.status === 'success') {
+                    setTimeout(function() {
+                        contactForm.removeAttribute('data-pageclip-status');
+                        contactForm.reset();
+                        const successEl = contactForm.querySelector('.pageclip-form__success');
+                        if (successEl) {
+                            successEl.remove();
+                        }
+                    }, 3000);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
