@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nagisa Marketing Solutions | A Little Bit of Japan</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
     <style>
         * {
             margin: 0;
@@ -483,7 +484,33 @@
             resize: vertical;
         }
 
-        .submit-btn {
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-input-group select {
+            width: 120px;
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Noto Sans', sans-serif;
+            background: var(--white);
+            transition: border-color 0.3s;
+        }
+
+        .phone-input-group select:focus {
+            outline: none;
+            border-color: var(--sakura);
+        }
+
+        .phone-input-group input {
+            flex: 1;
+        }
+
+        .submit-btn,
+        .pageclip-form__submit {
             width: 100%;
             padding: 15px;
             background: var(--black);
@@ -495,8 +522,13 @@
             transition: background 0.3s;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover,
+        .pageclip-form__submit:hover {
             background: #333;
+        }
+
+        .pageclip-form__submit span {
+            color: var(--white);
         }
 
         /* Footer */
@@ -787,7 +819,7 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
-            <form class="contact-form">
+            <form action="https://send.pageclip.co/ba0LrSr4TD7qYPBKtZgHqYA4vSoT4Z8A/NagisaMarketingSolutions" class="contact-form pageclip-form" method="post">
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -801,10 +833,30 @@
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
+                    <label for="phone">Phone (Optional)</label>
+                    <div class="phone-input-group">
+                        <select id="country-code" name="country_code">
+                            <option value="+91">+91 (IN)</option>
+                            <option value="+81">+81 (JP)</option>
+                            <option value="+1">+1 (US)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+65">+65 (SG)</option>
+                            <option value="+971">+971 (UAE)</option>
+                            <option value="+86">+86 (CN)</option>
+                            <option value="+82">+82 (KR)</option>
+                            <option value="+66">+66 (TH)</option>
+                            <option value="+62">+62 (ID)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" placeholder="1234567890">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="message">Message *</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="pageclip-form__submit">
+                    <span>Send Message</span>
+                </button>
             </form>
         </div>
     </section>
@@ -898,5 +950,6 @@
             });
         });
     </script>
+    <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 </body>
 </html>
