@@ -531,6 +531,26 @@
             color: var(--white);
         }
 
+        /* Pageclip success message */
+        .pageclip-form__success {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            font-size: 1.5rem;
+            color: var(--black);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .pageclip-form__success::before {
+            content: "Thank you for your message!";
+        }
+
+        .pageclip-form[data-pageclip-status="success"] .form-group,
+        .pageclip-form[data-pageclip-status="success"] .pageclip-form__submit {
+            display: none;
+        }
+
         /* Footer */
         footer {
             background: var(--black);
